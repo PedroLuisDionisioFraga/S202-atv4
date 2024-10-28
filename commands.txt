@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS montadora.estoque (
+  id int PRIMARY KEY,
+  nome text,
+  carro text,
+  estante int,
+  nivel int,
+  quantidade int
+);
+
+INSERT INTO montadora.estoque (id, nome, carro, estante, nivel, quantidade) VALUES (5, 'Pistao', 'Mustang', 4, 1, 167);
+INSERT INTO montadora.estoque (id, nome, carro, estante, nivel, quantidade) VALUES (4, 'Suspencao', 'Argo', 1, 1, 3500);
+
+-- a. Fetch all data for item with name 'Pistão'
+SELECT * FROM montadora.estoque WHERE nome = 'Pistao';
+
+-- b. Calculate the average quantity of all columns stored in the table
+SELECT AVG(quantidade) FROM montadora.estoque;
+
+-- c. Count the number of columns stored in the table
+SELECT COUNT(*) FROM montadora.estoque;
+
+-- d. Fetch the maximum and minimum quantity of parts using aliases "maior quantidade" and "menor quantidade"
+SELECT MAX(quantidade) AS "maior quantidade", MIN(quantidade) AS "menor quantidade" FROM montadora.estoque;
+
+-- e. Fetch attributes name, car, and quantity where shelf is equal to 3
+SELECT nome, carro, quantidade FROM montadora.estoque WHERE estante = 3;
+
+-- f. Fetch the average quantity where level is equal to 1
+SELECT AVG(quantidade) FROM montadora.estoque WHERE nivel = 1;
+
+-- g. Fetch all attributes where shelf is less than 3 and level is greater than 4
+SELECT * FROM montadora.estoque WHERE estante < 3 AND nivel > 4;
